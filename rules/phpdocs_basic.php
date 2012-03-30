@@ -106,7 +106,7 @@ function local_moodlecheck_classesdocumented(local_moodlecheck_file $file) {
 function local_moodlecheck_functionsdocumented(local_moodlecheck_file $file) {
     $errors = array();
     foreach ($file->get_functions() as $function) {
-        if ($function->phpdocs === false) {
+        if ($function->phpdocs === false && $function->name != '(') {
             $errors[] = array('function' => $function->fullname, 'line' => $file->get_line_number($function->boundaries[0]));
         }
     }
